@@ -1,0 +1,66 @@
+_short_opts()
+{
+    local cur opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    opts="-? -h -f -q -as -v -D"
+
+    COMPREPLY=( $( compgen -W "${opts}" -- ${cur} ) )
+}
+
+_long_opts()
+{
+    local cur opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    opts="--help --force --quiet --verbose"
+
+    COMPREPLY=( $( compgen -W "${opts}" -- ${cur} ) )
+}
+
+_commands()
+{
+    local cur commands
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    commands="init mirror install installed switch off"
+
+    COMPREPLY=( $( compgen -W "${commands}" -- ${cur} ) )
+}
+
+_switch()
+{
+    local cur perls
+    COMPREPLY=()
+    cur=${COMP_WORDS[COMP_CWORD]}
+    perls=($PERLBREW_ROOT/perls/perl-*)
+    count=${#perls[@]}
+    for (( i=0; i < count; i++ )); do
+        perls[i]=${perls[i]##*/}
+    done
+    perls+=(/usr/bin/perl)
+
+    COMPREPLY=( $( compgen -W "${perls[*]}" -- ${cur} ) )
+}
+
+_perlbrew()
+{
+    local cur prev opts perls
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    if [[ "${prev}" == switch ]]; then
+        _switch
+    elif [[ "${cur}" == --* ]]; then
+        _long_opts
+    elif [[ "${cur}" == -* ]]; then
+        _short_opts
+    else
+        _commands
+    fi
+}
+
+complete -F _perlbrew perlbrew
+
+# vim: set ts=4 sw=4 tw=75 filetype=sh:
