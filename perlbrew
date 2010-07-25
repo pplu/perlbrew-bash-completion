@@ -31,7 +31,7 @@ _commands()
 _switch()
 {
     local cur perls
-    local ROOT=${PERLBREW_ROOT:-$HOME/perl5}
+    local ROOT=${PERLBREW_ROOT:-$HOME/perl5/perlbrew}
     COMPREPLY=()
     cur=${COMP_WORDS[COMP_CWORD]}
     perls=($ROOT/perls/perl-*)
