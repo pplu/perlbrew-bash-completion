@@ -31,9 +31,10 @@ _commands()
 _switch()
 {
     local cur perls
+    local ROOT=${PERLBREW_ROOT:-$HOME/perl5}
     COMPREPLY=()
     cur=${COMP_WORDS[COMP_CWORD]}
-    perls=($PERLBREW_ROOT/perls/perl-*)
+    perls=($ROOT/perls/perl-*)
     count=${#perls[@]}
     for (( i=0; i < count; i++ )); do
         perls[i]=${perls[i]##*/}
