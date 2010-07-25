@@ -15,4 +15,6 @@ This can be useful if you can't quite recall if you have `perl-5.12.3` or
 
 ## LICENSE
 
-This is licensed under the same terms as Perl. Go nuts.
+MIT License
+
+Copyright (c) 2010, Peter Aronoff. See LICENSE for details.
