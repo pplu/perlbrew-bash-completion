@@ -35,13 +35,8 @@ _switch()
     COMPREPLY=()
     cur=${COMP_WORDS[COMP_CWORD]}
     perls=($ROOT/perls/perl-*)
-    count=${#perls[@]}
-    for (( i=0; i < count; i++ )); do
-        perls[i]=${perls[i]##*/}
-    done
-    perls+=(/usr/bin/perl)
 
-    COMPREPLY=( $( compgen -W "${perls[*]}" -- ${cur} ) )
+    COMPREPLY=( $( compgen -W "${perls[*]##*/} /usr/bin/perl" -- ${cur} ) )
 }
 
 _perlbrew()
