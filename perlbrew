@@ -36,9 +36,9 @@ _switch()
     cur=${COMP_WORDS[COMP_CWORD]}
     perls=($ROOT/perls/perl-*)
     # remove all but the final part of the name
-    perls=(${perls[*]##*/})
+    perls="${perls[@]##*/} /usr/bin/perl"
 
-    COMPREPLY=( $( compgen -W "${perls[*]} /usr/bin/perl" -- ${cur} ) )
+    COMPREPLY=( $( compgen -W "${perls}" -- ${cur} ) )
 }
 
 _perlbrew()
