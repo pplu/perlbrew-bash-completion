@@ -3,7 +3,7 @@ _short_opts()
     local cur opts
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
-    opts="-? -h -f -n -q -as -v -D -U"
+    opts="-? -h -f -n -q -v -D -U -A"
 
     COMPREPLY=( $( compgen -W "${opts}" -- ${cur} ) )
 }
@@ -13,7 +13,7 @@ _long_opts()
     local cur opts
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
-    opts="--help --force --notest --quiet --verbose"
+    opts="--as --help --force --notest --quiet --verbose"
 
     COMPREPLY=( $( compgen -W "${opts}" -- ${cur} ) )
 }
