@@ -3,7 +3,7 @@ _short_opts()
     local cur opts
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
-    opts="-? -h -f -n -q -v -D -U -A"
+    opts="-? -f -n -q -v -D -U -A"
 
     COMPREPLY=( $( compgen -W "${opts}" -- ${cur} ) )
 }
