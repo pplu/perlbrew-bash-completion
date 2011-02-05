@@ -29,7 +29,7 @@ _commands()
     COMPREPLY=( $( compgen -W "${commands}" -- ${cur} ) )
 }
 
-_switch()
+_perls()
 {
     local cur perls
     local ROOT=${PERLBREW_ROOT:-$HOME/perl5/perlbrew}
@@ -49,8 +49,8 @@ _perlbrew()
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
 
-    if [[ "${prev}" == switch ]]; then
-        _switch
+    if [[ "${prev}" == switch || "${prev}" == use ]]; then
+        _perls
     elif [[ "${cur}" == --* ]]; then
         _long_opts
     elif [[ "${cur}" == -* ]]; then
