@@ -23,7 +23,8 @@ _commands()
     local cur commands
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
-    commands="init mirror install installed switch off"
+    commands="init mirror install installed switch use off list mirror\
+        version help env symlink_executables"
 
     COMPREPLY=( $( compgen -W "${commands}" -- ${cur} ) )
 }
