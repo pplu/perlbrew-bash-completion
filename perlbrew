@@ -23,8 +23,8 @@ _commands()
     local cur commands
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
-    commands="init mirror install installed switch use off list mirror\
-        version help env symlink_executables"
+    commands="init mirror install list use switch version off env\
+        symlink_executables install-cpanm"
 
     COMPREPLY=( $( compgen -W "${commands}" -- ${cur} ) )
 }
@@ -37,7 +37,7 @@ _perls()
     cur=${COMP_WORDS[COMP_CWORD]}
     perls=($ROOT/perls/perl-*)
     # remove all but the final part of the name
-    perls="${perls[@]##*/} /usr/bin/perl"
+    perls="${perls[@]##*/}"
 
     COMPREPLY=( $( compgen -W "${perls}" -- ${cur} ) )
 }
