@@ -35,9 +35,7 @@ _perls()
     local ROOT=${PERLBREW_ROOT:-$HOME/perl5/perlbrew}
     COMPREPLY=()
     cur=${COMP_WORDS[COMP_CWORD]}
-    perls=($ROOT/perls/perl-*)
-    # remove all but the final part of the name
-    perls="${perls[@]##*/}"
+    perls=$(perlbrew list | cut -b3-)
 
     COMPREPLY=( $( compgen -W "${perls}" -- ${cur} ) )
 }
